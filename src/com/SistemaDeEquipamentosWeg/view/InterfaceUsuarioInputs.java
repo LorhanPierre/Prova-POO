@@ -2,7 +2,7 @@ package com.SistemaDeEquipamentosWeg.view;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class InterfaceUsuario {
+public class InterfaceUsuarioInputs {
 
     Scanner input = new Scanner(System.in);
 
@@ -17,6 +17,7 @@ public class InterfaceUsuario {
         System.out.println("┃(sistema de controle de equipamentos weg)┃");
         System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
         System.out.println("┃                 OPÇÕES                  ┃");
+        System.out.println("┃              ------------               ┃");
         System.out.println("┃ 1 - Cadastrar Equipamento               ┃");
         System.out.println("┃ 2 - Listar Equipamentos                 ┃");
         System.out.println("┃ 3 - Buscar Equipamentos                 ┃");
@@ -34,7 +35,7 @@ public class InterfaceUsuario {
                 opcao = escolha;
                 error = false;
             } catch (InputMismatchException erro) {
-                System.err.println("Você digitou um valor errado, Tente Digitar um número!");
+                System.err.println("ERRO:Você digitou um valor errado, Tente Digitar um número!");
                 input.nextLine();
             }
         }while(error);
@@ -64,7 +65,38 @@ public class InterfaceUsuario {
                 opcao = escolha;
                 error = false;
             } catch (InputMismatchException erro) {
-                System.err.println("Você digitou um valor errado, Tente Digitar um número!");
+                System.err.println("ERRO:Você digitou um valor errado, Tente Digitar um número!");
+                input.nextLine();
+            }
+        }while(error);
+        return opcao;
+    }
+
+    public int OpcoesListagem(){
+
+        input.nextLine();
+
+        int opcao = 0, escolha;
+        boolean error = true;
+
+        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("┃        - Escolha o que deseja:          ┃");
+        System.out.println("┣----------━━━━━━━━━━━━━━━━━━━━━----------┫");
+        System.out.println("┃ 1 - Motor Elétrico                      ┃");
+        System.out.println("┃ 2 - Painel de Controle                  ┃");
+        System.out.println("┃ 3 - Todos                               ┃");
+        System.out.println("┃                                         ┃");
+        System.out.println("┃ 0 - Voltar                              ┃");
+        System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+        System.out.println("┃ - Digite a opção desejada -             ┃");
+        System.out.print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n:");
+        do {
+            try {
+                escolha = input.nextInt();
+                opcao = escolha;
+                error = false;
+            } catch (InputMismatchException erro) {
+                System.err.println("ERRO:Você digitou um valor errado, Tente Digitar um número!");
                 input.nextLine();
             }
         }while(error);
@@ -82,7 +114,7 @@ public class InterfaceUsuario {
     }
 
     public String Codigo(){
-
+        input.nextLine();
         System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.out.println("┃ - Digite o Código do Equipamento -      ┃");
         System.out.print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n:");
@@ -93,7 +125,6 @@ public class InterfaceUsuario {
 
     public int Quantidade(){
 
-        input.nextLine();
         int quantidade = 0, quantia;
         boolean error = true;
 
@@ -103,10 +134,11 @@ public class InterfaceUsuario {
         do {
             try {
                 quantia = input.nextInt();
+                input.nextLine();
                 quantidade = quantia;
                 error = false;
             } catch (InputMismatchException erro) {
-                System.err.println("Você digitou um valor errado, Tente Digitar um número!");
+                System.err.println("ERRO:Você digitou um valor errado, Tente Digitar um número!");
                 input.nextLine();
             }
         }while(error);
@@ -114,8 +146,6 @@ public class InterfaceUsuario {
     }
 
     public double Preco(){
-
-        input.nextLine();
         double preco = 0, valor;
         boolean error = true;
 
@@ -128,7 +158,7 @@ public class InterfaceUsuario {
                 preco = valor;
                 error = false;
             } catch (InputMismatchException erro) {
-                System.err.println("Você digitou um valor errado, Tente Digitar um número!");
+                System.err.println("ERRO:Você digitou um valor errado ou utilizou um ponto, Tente Digitar um número (numeros decimais use virgula)!");
                 input.nextLine();
             }
         }while(error);
@@ -150,7 +180,7 @@ public class InterfaceUsuario {
                 potencia = pot;
                 error = false;
             } catch (InputMismatchException erro) {
-                System.err.println("Você digitou um valor errado, Tente Digitar um número!");
+                System.err.println("ERRO:Você digitou um valor errado, Tente Digitar um número!");
                 input.nextLine();
             }
         }while(error);
@@ -158,49 +188,44 @@ public class InterfaceUsuario {
     }
 
     public String Tensao(){
-
         input.nextLine();
-
         System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.out.println("┃ - Digite o Preço do Equipamento -       ┃");
+        System.out.println("┃ - Digite a Tensão do Equipamento -      ┃");
         System.out.print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n:");
         String tensao = input.nextLine();
 
         return tensao;
     }
 
-//MENSAGENS====MENSAGENS====MENSAGENS=====MENSAGENS=====MENSAGENS======MENSAGENS=====MENSAGENS====MENSAGENS======MENSAGENS=====
+    public int TipoDeBusca(){
 
-    public void MensagemDespedida(){
+        input.nextLine();
 
-        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.out.println("┃          Tchau até a proxima ;)         ┃");
-        System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-
-    }
-
-    public void AreaCadatro(){
+        int opcao = 0, escolha;
+        boolean error = true;
 
         System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.out.println("┃          Área de Cadastros              ┃");
-        System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-
-    }
-
-    public void CadastroMotorEletrico(){
-
-        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.out.println("┃      Cadastrando Motor Elétrico...      ┃");
-        System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-
-    }
-
-    public void CadastroPainelControle(){
-
-        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.out.println("┃    Cadastrando Painel de Controle...    ┃");
-        System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-
+        System.out.println("┃        - Escolha o que deseja:          ┃");
+        System.out.println("┣----------━━━━━━━━━━━━━━━━━━━━━----------┫");
+        System.out.println("┃ 1 - Busca Por Código                    ┃");
+        System.out.println("┃ 2 - Busca Por Nome                      ┃");
+        System.out.println("┃ 3 - Busca Por Preço                     ┃");
+        System.out.println("┃                                         ┃");
+        System.out.println("┃ 0 - Voltar                              ┃");
+        System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+        System.out.println("┃ - Digite a opção desejada -             ┃");
+        System.out.print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n:");
+        do {
+            try {
+                escolha = input.nextInt();
+                opcao = escolha;
+                error = false;
+            } catch (InputMismatchException erro) {
+                System.err.println("ERRO:Você digitou um valor errado, Tente Digitar um número!");
+                input.nextLine();
+            }
+        }while(error);
+        return opcao;
     }
 
 }
