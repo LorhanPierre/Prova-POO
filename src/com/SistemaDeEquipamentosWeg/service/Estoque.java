@@ -83,7 +83,7 @@ public class Estoque {
                 switch (menu.TipoDeBusca()){
                     case 1 ->{
                         for(Equipamento produto: almoxarifado){
-                            if(menu.Codigo() == produto.getCodigo()){
+                            if(menu.Codigo().equalsIgnoreCase(produto.getCodigo())){
                                 System.out.println(produto);
                                 mensagem.Encontrado();
                             }else{
@@ -91,11 +91,60 @@ public class Estoque {
                             }
                         }
                     }
-                    case 2 ->{}
+                    case 2 ->{
+                        for(Equipamento produto: almoxarifado){
+                            if(menu.Nome().equalsIgnoreCase(produto.getNome())){
+                                System.out.println(produto);
+                                mensagem.Encontrado();
+                            }else{
+                                mensagem.NaoEncontrado();
+                            }
+                        }
+                    }
                     case 3 ->{}
                 }
             }
-            case 4 ->{}
+            case 4 ->{
+                mensagem.AreaExclusao();
+                switch (menu.TipoDeExclusao()){
+                    case 1 ->{
+                        boolean remocaoConcluida = false;
+                        String exclusaoEquipamento = menu.Codigo();
+                        for(Equipamento produto: almoxarifado){
+                            for(int localProduto = 0; localProduto < almoxarifado.size(); localProduto++){
+                                if(exclusaoEquipamento.equalsIgnoreCase(almoxarifado.get(localProduto).getNome())){
+                                    almoxarifado.remove(localProduto);
+                                    remocaoConcluida = true;
+                                }
+                            }
+                            if(remocaoConcluida == true){
+                                mensagem.ExclusaoConcluida();
+                                break;
+                            }else{
+                                mensagem.ExclusaoFalhada();
+                            }
+                        }
+                    }
+                    case 2 ->{
+                        boolean remocaoConcluida = false;
+                        String exclusaoEquipamento = menu.Nome();
+                        for(Equipamento produto: almoxarifado){
+                            for(int localProduto = 0; localProduto < almoxarifado.size(); localProduto++){
+                                if(exclusaoEquipamento.equalsIgnoreCase(almoxarifado.get(localProduto).getNome())){
+                                    almoxarifado.remove(localProduto);
+                                    remocaoConcluida = true;
+                                }
+                            }
+                            if(remocaoConcluida == true){
+                                mensagem.ExclusaoConcluida();
+                                break;
+                            }else{
+                                mensagem.ExclusaoFalhada();
+                            }
+                        }
+                    }
+                }
+            }
             case 5 ->{}
             case 6 ->{}
 
