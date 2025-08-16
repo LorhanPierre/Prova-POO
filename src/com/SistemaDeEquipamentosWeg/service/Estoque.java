@@ -145,7 +145,9 @@ public class Estoque {
                     }
                 }
             }
-            case 5 ->{}
+            case 5 ->{
+
+            }
             case 6 ->{}
 
         }

@@ -260,4 +260,35 @@ public class InterfaceUsuarioInputs {
         return opcao;
     }
 
+    public int TipoMovimentacao(){
+
+        input.nextLine();
+
+        int opcao = 0, escolha;
+        boolean error = true;
+
+        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("┃        - Escolha o que deseja:          ┃");
+        System.out.println("┣----------━━━━━━━━━━━━━━━━━━━━━----------┫");
+        System.out.println("┃ 1 - Adicionar Unidades ao Equipamento   ┃");
+        System.out.println("┃ 2 - Remover Unidades do Equipamento     ┃");
+        System.out.println("┃                                         ┃");
+        System.out.println("┃ 0 - Voltar                              ┃");
+        System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+        System.out.println("┃ - Digite a opção desejada -             ┃");
+        System.out.print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n:");
+        do {
+            try {
+                escolha = input.nextInt();
+                opcao = escolha;
+                error = false;
+            } catch (InputMismatchException erro) {
+                System.err.println("ERRO:Você digitou um valor errado, Tente Digitar um número!");
+                input.nextLine();
+            }
+        }while(error);
+        input.nextLine();
+        return opcao;
+    }
+
 }
